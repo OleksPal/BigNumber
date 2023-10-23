@@ -76,4 +76,31 @@ public:
 
         return newNumber;
     }
+
+    BigNumber shiftL(int shiftLength) {
+        BigNumber newNumber("");
+
+        for (int i = shiftLength; i < number.size(); i++) {
+            newNumber.number.push_back(number[i]);
+        }
+
+        for (int i = 0; i < shiftLength; i++) {
+            newNumber.number.push_back(0);
+        }
+
+        return newNumber;
+    }
+
+    BigNumber shiftR(int shiftLength) {
+        BigNumber newNumber("");
+
+        for (int i = 0; i < shiftLength; i++) {
+            newNumber.number.push_back(0);
+        }
+        for (int i = 0; i < number.size() - shiftLength; i++) {
+            newNumber.number.push_back(number[i]);
+        }
+
+        return newNumber;
+    }
 };

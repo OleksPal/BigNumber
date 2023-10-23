@@ -15,4 +15,6 @@ public:
     BigNumber XOR(BigNumber);
     BigNumber OR(BigNumber);
     BigNumber AND(BigNumber);
+    BigNumber shiftL(int);
+    BigNumber shiftR(int);
 };
