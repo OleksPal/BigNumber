@@ -14,6 +14,8 @@ public:
     }
 
     void setHex(std::string value) {
+        number.clear();
+
         int size = value.size() - 2; // (-"0x")
         value.erase(0, 2);
 
@@ -33,5 +35,45 @@ public:
         hexNumber += ss.str();
 
         return hexNumber;
+    }
+
+    BigNumber INV() {
+        BigNumber newNumber("");
+
+        for (int i = 0; i < number.size(); i++) {
+            newNumber.number.push_back(~number[i]);
+        }
+
+        return newNumber;
+    }
+
+    BigNumber XOR(BigNumber secondOperand) {
+        BigNumber newNumber("");
+
+        for (int i = 0; i < number.size(); i++) {
+            newNumber.number.push_back(number[i] ^ secondOperand.number[i]);
+        }
+
+        return newNumber;
+    }
+
+    BigNumber OR(BigNumber secondOperand) {
+        BigNumber newNumber("");
+
+        for (int i = 0; i < number.size(); i++) {
+            newNumber.number.push_back(number[i] | secondOperand.number[i]);
+        }
+
+        return newNumber;
+    }
+
+    BigNumber AND(BigNumber secondOperand) {
+        BigNumber newNumber("");
+
+        for (int i = 0; i < number.size(); i++) {
+            newNumber.number.push_back(number[i] & secondOperand.number[i]);
+        }
+
+        return newNumber;
     }
 };

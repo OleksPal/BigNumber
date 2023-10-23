@@ -7,9 +7,12 @@ class BigNumber {
 public:
     std::vector<unsigned long long> number;
 
-    BigNumber(std::string value);
+    BigNumber(std::string);
 
-    void setHex(std::string value);
-
+    void setHex(std::string);
     std::string getHex();
+    BigNumber INV();
+    BigNumber XOR(BigNumber);
+    BigNumber OR(BigNumber);
+    BigNumber AND(BigNumber);
 };
