@@ -17,5 +17,6 @@ public:
     BigNumber AND(BigNumber);
     BigNumber shiftL(int);
     BigNumber shiftR(int);
+    BigNumber ADD(BigNumber);
     std::vector<unsigned long long> increaseSize(int);
 };

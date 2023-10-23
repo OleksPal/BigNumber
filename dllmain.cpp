@@ -119,6 +119,41 @@ public:
         return newNumber;
     }
 
+    BigNumber ADD(BigNumber secondOperand) {
+        BigNumber newNumber("");
+
+        if (secondOperand.number.size() < number.size()) {
+            int difference = number.size() - secondOperand.number.size();
+            secondOperand.number = secondOperand.increaseSize(difference);
+        }
+        else if (number.size() < secondOperand.number.size())
+        {
+            int difference = secondOperand.number.size() - number.size();
+            number = increaseSize(difference);
+        }
+
+        int overflow = 0;
+        for (int i = number.size() - 1; i >= 0; i--) {
+            if (number[i] + secondOperand.number[i] + overflow >= 16)
+            {
+                newNumber.number.push_back((number[i] + secondOperand.number[i] + overflow) % 16);
+                overflow = 1;
+            }
+            else
+            {
+                newNumber.number.push_back(number[i] + secondOperand.number[i] + overflow);
+                overflow = 0;
+            }
+        }
+
+        if (overflow == 1)
+            newNumber.number.push_back(1);
+
+        std::reverse(newNumber.number.begin(), newNumber.number.end());
+
+        return newNumber;
+    }
+
     std::vector<unsigned long long> increaseSize(int difference) {
         std::vector<unsigned long long> newSecondNumber;
 
