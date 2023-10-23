@@ -50,6 +50,11 @@ public:
     BigNumber XOR(BigNumber secondOperand) {
         BigNumber newNumber("");
 
+        if (secondOperand.number.size() < number.size()) {
+            int difference = number.size() - secondOperand.number.size();
+            secondOperand.number = secondOperand.increaseSize(difference);
+        }
+
         for (int i = 0; i < number.size(); i++) {
             newNumber.number.push_back(number[i] ^ secondOperand.number[i]);
         }
@@ -60,6 +65,11 @@ public:
     BigNumber OR(BigNumber secondOperand) {
         BigNumber newNumber("");
 
+        if (secondOperand.number.size() < number.size()) {
+            int difference = number.size() - secondOperand.number.size();
+            secondOperand.number = secondOperand.increaseSize(difference);
+        }
+
         for (int i = 0; i < number.size(); i++) {
             newNumber.number.push_back(number[i] | secondOperand.number[i]);
         }
@@ -69,6 +79,11 @@ public:
 
     BigNumber AND(BigNumber secondOperand) {
         BigNumber newNumber("");
+
+        if (secondOperand.number.size() < number.size()) {
+            int difference = number.size() - secondOperand.number.size();
+            secondOperand.number = secondOperand.increaseSize(difference);
+        }
 
         for (int i = 0; i < number.size(); i++) {
             newNumber.number.push_back(number[i] & secondOperand.number[i]);
@@ -102,5 +117,17 @@ public:
         }
 
         return newNumber;
+    }
+
+    std::vector<unsigned long long> increaseSize(int difference) {
+        std::vector<unsigned long long> newSecondNumber;
+
+        for (int i = 0; i < difference; i++)
+            newSecondNumber.push_back(0);
+
+        for (int i = 0; i < number.size(); i++)
+            newSecondNumber.push_back(number[i]);
+
+        return newSecondNumber;
     }
 };
