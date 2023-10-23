@@ -1,16 +1,11 @@
-#ifdef BigNumber_EXPORTS
-#define BigNumber_API __declspec(dllexport) 
-#else
-#define BigNumber_API __declspec(dllimport) 
-#endif
-
+#include <iostream>    
+#include <vector>
 #include <string>
-#include <iomanip>
-#include <string.h>
+#include <sstream>
 
 class BigNumber {
 public:
-    unsigned long long* number;
+    std::vector<unsigned long long> number;
 
     BigNumber(std::string value);
 
